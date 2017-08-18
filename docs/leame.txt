@@ -1,0 +1,21 @@
+informações gerais do projeto.
+
+Atualmente o projeto tem as seguintes funcionalidades:
+1. Insere produto
+2. Lista produtos
+3. Faz upload de imagem
+4. Login de usuário
+5. Logout de usuário
+6. Insere usuário
+7. Lista usuários
+9. Visão responsiva com o uso do Bootstrap
+
+Para rodar a aplicação:
+1. Baixe o projeto via clone da URL https://github.com/armandossrecife/loja.git
+2. Configure o projeto como MAVEN
+3. Atualize as dependências via Maven Update Project
+4. Configure o Conteiner Java para rodar no Tom Cat
+5. Crie um banco mysql com nome bancoloja
+6. Faça as configurações necessárias na classe de Constantes (br.ufpi.loja.utilidades)
+7. Faça as configurações web necessárias no pacote br.ufpi.loja.configuracoes
+8. Atualize seu JDK para 1.8 
