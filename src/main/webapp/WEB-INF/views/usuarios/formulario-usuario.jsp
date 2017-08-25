@@ -12,6 +12,19 @@
        <!-- Custom styles for this template -->
     <link href="resources/css/starter-template.css" rel="stylesheet">
 	<script src="resources/js/bootstrap-filestyle.min.js"></script>
+	<script type="text/javascript">
+	function validarSenha() {
+		senha = document.FormSolicitaUsuario.senha.value;
+		confirmaSenha = document.FormSolicitaUsuario.confirmasenha.value;
+
+		if (senha != confirmaSenha) {
+			alert("Senha não confere");
+			return false;
+		} else {
+			return true;
+		}
+	}
+</script>
 </head>
 
 <body>
@@ -28,7 +41,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <figure class="logo">
-                <a class="navbar-brand topnav" href="/loja"><img src="resources/minhas-imagens/logo.png" width="25" height="25"></a>
+                <a class="navbar-brand topnav" href="/loja"><span class="glyphicon glyphicon-education"></span> - Loja de Livros</a>
                 </figure>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -48,24 +61,31 @@
 		<div class="container">
 			<div class="panel panel-default">
 
-				<form action="salvaUsuario" method="post">
+				<form action="salvaUsuario" id="FormSolicitaUsuario" name="FormSolicitaUsuairo" onsubmit="return validarSenha();" method="post">
 					<h2 class="text-center">Cadastra Usuario</h2>
+
 					<div class="form-group">
-						<label>Nome</label>
-						<form:input path="usuario.nome" class="form-control" />
+						<label>Nome</label> <input name="nome" class="form-control"
+							required />
 					</div>
 					<div class="form-group">
-						<label>E-mail</label>
-						<form:input path="usuario.email" class="form-control" />
+						<label>E-mail</label> <input name="email" class="form-control"
+							required />
 					</div>
 					<div class="form-group">
-						<label>Usuario</label>
-						<form:input path="usuario.login" class="form-control" />
+						<label>Usuario</label> <input name="login" class="form-control"
+							required />
 					</div>
 					<div class="form-group">
-						<label>Senha</label>
-						<form:password path="usuario.senha" class="form-control" />
+						<label>Senha</label> <input type="password" id="senha"
+							name="senha" class="form-control" required />
 					</div>
+					<div class="form-group">
+						<label>Confirma Senha</label> <input type="password"
+							id="confirmasenha" name="confirmasenha" class="form-control"
+							required />
+					</div>
+
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary btn-block">
 							Cadastrar</button>

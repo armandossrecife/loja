@@ -7,12 +7,17 @@ import javax.persistence.Id;
 
 @Entity
 public class Usuario {
+	public Usuario() {
+		this.status = 0;
+	}
+
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String login;
 	private String senha;
 	private String nome;
 	private String email;
+	private int status;
 
 	public String getLogin() {
 		return login;
@@ -52,5 +57,13 @@ public class Usuario {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 }

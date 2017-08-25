@@ -28,7 +28,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <figure class="logo">
-                <a class="navbar-brand topnav" href="/loja"><img src="resources/minhas-imagens/logo.png" width="25" height="25"></a>
+                <a class="navbar-brand topnav" href="/loja"><span class="glyphicon glyphicon-education"></span> - Loja de Livros</a>
                 </figure>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->

@@ -1,8 +1,5 @@
 package br.ufpi.loja.controllers;
 
-import br.ufpi.loja.daos.UsuarioDAO;
-import br.ufpi.loja.modelos.Usuario;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +9,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.ufpi.loja.daos.UsuarioDAO;
+import br.ufpi.loja.modelos.Usuario;
+
 @Controller
 public class UsuarioController {
 	@Autowired
 	UsuarioDAO dao;
 	
 	/**
-	 * no primeiro GET retorna o formulário de novo Usuário
-	 * @return página novo-usuario.jsp
+	 * Lista os usuários cadastrados
+	 * @return página lista-usuarios.jsp
 	 */
 	@RequestMapping(value="/listaUsuarios", method = RequestMethod.GET)
 	public ModelAndView listaUsuarios() {
@@ -68,10 +68,35 @@ public class UsuarioController {
     		return new ModelAndView("redirect:/listaUsuarios");
     }
     
+    /**
+     * Mostra um formulário para cadastro (solicitação) de novo usuário externo
+     * @return página formulario-usuario-externo.jsp
+     */
     @RequestMapping("/novoUsuarioExterno")
     public String formUsuarioExterno(){
-    	//TODO implementa o cadastro de um usuario externo 
-    	return "usuarios/formulario-usuario-externo";
+    		return "usuarios/formulario-usuario-externo";
     }
-   
+    
+    /**
+     * Recurso para permitir cadastros externos de usuários
+     * @return solicitacao-usuario-externo.jsp
+     */
+	@RequestMapping(value="/solicitadoNovoUsuarioExterno", method = RequestMethod.GET)
+	public ModelAndView pedidoNovoUsuarioExterno() {
+        ModelAndView mav = new ModelAndView("usuarios/solicitacao-usuario-externo");
+		return mav;
+	}    
+    
+    /**
+     * Salva um novo usuário externo
+     * @param usuario Usuario externo
+     * @param redirectAttributes encaminha mensagem para outra página
+     * @return /usuarios - lista de usuários
+     */
+    @RequestMapping(value="/salvaUsuarioExterno", method=RequestMethod.POST)
+    public ModelAndView gravaUsuarioExterno(Usuario usuario, RedirectAttributes redirectAttributes){
+    		dao.gravar(usuario);
+    		redirectAttributes.addFlashAttribute("sucesso", "Pedido de cadastro de novo Usuário enviado com sucesso!");
+    		return new ModelAndView("redirect:/solicitadoNovoUsuarioExterno");
+    }   
 }

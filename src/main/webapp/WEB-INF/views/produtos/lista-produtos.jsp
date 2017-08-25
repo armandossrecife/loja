@@ -28,7 +28,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <figure class="logo">
-                <a class="navbar-brand topnav" href="/loja"><img src="resources/minhas-imagens/logo.png" width="25" height="25"></a>
+                <a class="navbar-brand topnav" href="/loja"><span class="glyphicon glyphicon-education"></span> - Loja de Livros</a>
                 </figure>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -46,6 +46,8 @@
 
 <div class="container">
   <!-- Default panel contents -->
+  				<h2 class="text-center">Livros</h2>
+				<hr>
   <div class="panel-heading">Lista de Livros já cadastrados</div>
 		<table class="table table-striped">
 			<thead>
@@ -67,14 +69,14 @@
 				</c:forEach>
 			</tbody>
 		</table>
+			<h3>${mensagemSucesso}</h3>
+		<div>
+			<button type="submit" class="btn btn-primary btn-block"
+				onclick="window.location.href='/loja'">Volta</button>
+			<button type="submit" class="btn btn-primary btn-block"
+				onclick="window.location.href='/loja/novoProduto'">Novo</button>
+		</div>
 	</div>
-	<h3>${mensagemSucesso}</h3>
-	<div>
-		<button type="submit" class="btn btn-primary btn-block" onclick="window.location.href='/loja'">
-			 Volta
-		</button>
-		<button type="submit" class="btn btn-primary btn-block" onclick="window.location.href='/loja/novoProduto'"> Novo
-		</button>
-	</div>
+
 </body>
 </html>

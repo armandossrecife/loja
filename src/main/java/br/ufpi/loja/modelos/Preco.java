@@ -1,6 +1,7 @@
 package br.ufpi.loja.modelos;
 
 import java.math.BigDecimal;
+
 import javax.persistence.Embeddable;
 
 @Embeddable

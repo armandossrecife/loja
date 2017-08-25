@@ -2,11 +2,12 @@ package br.ufpi.loja.controllers;
 
 import javax.servlet.http.HttpSession;
 
-import br.ufpi.loja.daos.UsuarioDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import br.ufpi.loja.daos.UsuarioDAO;
 import br.ufpi.loja.modelos.Usuario;
 
 @Controller
@@ -31,12 +32,13 @@ public class LoginController{
 	 */
 	@RequestMapping("/efetuaLogin")
 	public String efetuaLogin(Usuario usuario, HttpSession session, Model model) {
-		if(dao.existeUsuario(usuario)) {
-			// usuario existe, guardaremos ele na session
+		Usuario checaUsuario = dao.pesquisaUsuario(usuario); 
+		if ((checaUsuario != null) && (checaUsuario.getStatus() >= 1)){
 			session.setAttribute("usuarioLogado", usuario);
 			return "home";
 		}
 		model.addAttribute("mensagem", "Erro usuário ou senha.");
+		model.addAttribute("tipoMensagem", "erro");
 		// ele errou a senha, voltou para o formulario
 		return "usuarios/formulario-login";
 	}

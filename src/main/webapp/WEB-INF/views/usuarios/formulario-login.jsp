@@ -5,12 +5,14 @@
 	
     <!-- Bootstrap -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/css/sticky-footer-navbar.css" rel="stylesheet"> 
        <!-- Custom styles for this template -->
     <link href="resources/css/starter-template.css" rel="stylesheet">
+    <link href="resources/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet"">
 	<script src="resources/js/bootstrap-filestyle.min.js"></script>
 </head>
 
-<body>
+<body onload="mostraMensagem(${mensagem})">
 
 	<!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
@@ -24,7 +26,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <figure class="logo">
-                <a class="navbar-brand topnav" href="/loja"><img src="resources/minhas-imagens/logo.png" width="25" height="25"></a>
+                <a class="navbar-brand topnav" href="/loja"><span class="glyphicon glyphicon-education"></span> - Loja de Livros</a>
                 </figure>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -40,88 +42,66 @@
         </div>
         <!-- /.container -->
     </nav>
-
+	<br>
 	<div class="container">
-		<div id="generic-modal" class="modal fade">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">×</span>
-						</button>
-						<h4 class="modal-title">
-							Confirmar exclusão
-						</h4>
-					</div>
-					<div class="modal-body">
-						<p>One fine body…</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">
-							Fechar
-						</button>
-						<button type="button" class="btn btn-danger" id="generic-modal-confirmation">
-							Remover
-						</button>
-					</div>
+		<div class="row-fluid">
+			<div class="span6 well">
+				<h3 class="header text-center">Acesse sua conta</h3>
+				<hr>
+				<div class="alert alert-info">
+					<span class="glyphicon glyphicon-exclamation-sign"></span> - Informe Usuário e Senha
 				</div>
-				<!-- /.modal-content -->
+				<form action="efetuaLogin" method="post">
+					<div class="form-group">
+						<label for="user">Usuário:</label> <input type="text"
+							class="form-control" id="user" name="login" required>
+					</div>
+
+					<div class="form-group">
+						<label for="pwd">Senha:</label> <input type="password"
+							class="form-control" id="pwd" name="senha" required>
+					</div>
+
+					<div class="checkbox">
+						<label><span class="glyphicon glyphicon-user"></span> | <a href="/loja/novoUsuarioExterno">Cadastre-se</a></label>
+						<label><span class="glyphicon glyphicon-envelope"></span> | <a href="#">Esqueceu a senha?</a>
+						</label>
+					</div>
+					<button type="submit" class="btn btn-primary btn-block">Entrar</button>
+				</form>
 			</div>
-			<!-- /.modal-dialog -->
 		</div>
-		<div class="container-fluid">
+		<!-- /container -->
 
-
-			<div class="container">
-				<div class="panel panel-default panel-login">
-					<form action="efetuaLogin" method="post">
-
-						<h2 class="text-center">Acesse sua conta</h2>
-						<hr>
-						<div class="form-group">
-							<label for="user">Usuário:</label> <input type="text"
-								class="form-control" id="user" name="login">
-						</div>
-
-						<div class="form-group">
-							<label for="pwd">Senha:</label> <input type="password"
-								class="form-control" id="pwd" name="senha">
-						</div>
-
-						<div class="checkbox">
-							<label> <a href="/loja/novoUsuario">Cadastre-se</a></label> <label>
-								<a href="/loja/esqueceuSenha">Esqueceu a senha?</a>
-							</label>
-						</div>
-						<button type="submit" class="btn btn-primary btn-block">Entrar</button>
-					</form>
-				</div>
-
-			</div>
-			<!-- /container -->
-
+		<div id="hidden_div_danger"
+			class="alert alert-danger alert-dismissible">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<span class="oi oi-warning"></span> - ${mensagem}
 		</div>
 
 	</div>
-	
-	<script>
-		$(document).ready(function(){
-			$(document).on('click', '.confirmation-modal', function(e){
-				e.preventDefault();
-				var $this = $(this), 
-					$modal = $('#generic-modal'),
-					body = $this.data('conf-modal-body');
-				if(body){
-					$modal.find('.modal-body').html(body);
-				}
-				$modal.modal('show');
-				$modal.find('#generic-modal-confirmation').unbind('click').on('click', function(e){
-					document.location.href = $this.attr('href');
-				});
-			});
-		});
+
+<footer class="footer">
+    <div class="container">
+            <div class="span6 pull-left text-left">
+                <span class="copyright-content">©&nbsp;COPYLEFT 2017. </span>
+            </div>
+            <div class="span6 pull-right text-right">
+                <span>Oficina de Introdução a Aplicações Web <a href="http://www.ufpi.br" target="_blank" title="ENGENHARIA DE SOFTWARE 2/DC/UFPI">ES2/DC/UFPI</a></span>
+            </div>
+    </div>
+</footer>
+
+	<script type="text/javascript">
+		function mostraMensagem(valor) {
+			if (valor != null){
+				document.getElementById('hidden_div_danger').style.display = "block";
+			}else {
+				document.getElementById('hidden_div_danger').style.display = "none";
+			}
+		}
 	</script>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="resources/js/bootstrap.min.js"></script>

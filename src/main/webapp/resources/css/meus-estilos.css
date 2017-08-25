@@ -1,35 +1,110 @@
-label, input {
-	display: block;
+.alert-message
+{
+    margin: 20px 0;
+    padding: 20px;
+    border-left: 3px solid #eee;
+}
+.alert-message h4
+{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.alert-message p:last-child
+{
+    margin-bottom: 0;
+}
+.alert-message code
+{
+    background-color: #fff;
+    border-radius: 3px;
+}
+.alert-message-success
+{
+    background-color: #F4FDF0;
+    border-color: #3C763D;
+}
+.alert-message-success h4
+{
+    color: #3C763D;
+}
+.alert-message-danger
+{
+    background-color: #fdf7f7;
+    border-color: #d9534f;
+}
+.alert-message-danger h4
+{
+    color: #d9534f;
+}
+.alert-message-warning
+{
+    background-color: #fcf8f2;
+    border-color: #f0ad4e;
+}
+.alert-message-warning h4
+{
+    color: #f0ad4e;
+}
+.alert-message-info
+{
+    background-color: #f4f8fa;
+    border-color: #5bc0de;
+}
+.alert-message-info h4
+{
+    color: #5bc0de;
+}
+.alert-message-default
+{
+    background-color: #EEE;
+    border-color: #B4B4B4;
+}
+.alert-message-default h4
+{
+    color: #000;
+}
+.alert-message-notice
+{
+    background-color: #FCFCDD;
+    border-color: #BDBD89;
+}
+.alert-message-notice h4
+{
+    color: #444;
 }
 
-input.text {
-	margin-bottom: 12px;
-	width: 95%;
-	padding: .4em;
+#message {
+    font-family:Arial,Helvetica,sans-serif;
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100%;
+    z-index:105;
+    text-align:center;
+    font-weight:bold;
+    font-size:100%;
+    color:white;
+    padding:10px 0px 10px 0px;
+    background-color:#8E1609;
 }
 
-fieldset {
-	padding: 1;
-	border: 1;
-	margin-top: 25px;
-	width: 25%;
+#message span {
+    text-align: center;
+    width: 95%;
+    float:left;
 }
 
-h1 {
-	font-size: 1.2em;
-	margin: .6em 0;
+.close-notify {
+    white-space: nowrap;
+    float:right;
+    margin-right:10px;
+    color:#fff;
+    text-decoration:none;
+    border:2px #fff solid;
+    padding-left:3px;
+    padding-right:3px
 }
 
-.ui-dialog .ui-state-error {
-	padding: .3em;
-}
-
-.validateTips {
-	border: 1px solid transparent;
-	padding: 0.3em;
-}
-
-div.mensagemErro {
-	width: 330px;
-	height: 40px;
+.close-notify a {
+    color: #fff;
 }
